@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - Trịnh Kiển Đạt</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      body {
+        background: #f3f4f6;
+        color: #111827;
+        display: flex;
+        justify-content: center;
+        padding: 32px 16px;
+      }
+
+      .cv-container {
+        max-width: 960px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+        display: grid;
+        grid-template-columns: 1fr 1.7fr;
+        overflow: hidden;
+      }
+
+      .cv-sidebar {
+        background: linear-gradient(180deg, #0f172a, #1f2937);
+        color: #e5e7eb;
+        padding: 32px 28px;
+      }
+
+      .avatar-wrapper {
+        width: 150px;
+        height: 150px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 4px solid rgba(248, 250, 252, 0.9);
+        margin-bottom: 20px;
+      }
+
+      .avatar-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .position {
+        font-size: 0.95rem;
+        color: #9ca3af;
+        margin-top: 4px;
+      }
+
+      .sidebar-section-title {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9ca3af;
+        margin-top: 28px;
+        margin-bottom: 10px;
+      }
+
+      .contact-item {
+        font-size: 0.92rem;
+        margin-bottom: 6px;
+      }
+
+      .contact-label {
+        font-weight: 600;
+        color: #e5e7eb;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        background: rgba(31, 41, 55, 0.9);
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+      }
+
+      .cv-main {
+        padding: 32px 32px 32px 28px;
+      }
+
+      .section-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #6b7280;
+        margin-bottom: 12px;
+      }
+
+      .section {
+        margin-bottom: 24px;
+      }
+
+      .summary-text {
+        font-size: 0.96rem;
+        line-height: 1.7;
+        color: #374151;
+      }
+
+      .timeline-item {
+        margin-top: 4px;
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+      }
+
+      .timeline-role {
+        font-weight: 600;
+      }
+
+      .timeline-time {
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+
+      .timeline-org {
+        font-size: 0.95rem;
+        color: #4b5563;
+      }
+
+      .list {
+        margin-top: 6px;
+        padding-left: 18px;
+        font-size: 0.95rem;
+        color: #374151;
+      }
+
+      .list li {
+        margin-bottom: 4px;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px 24px;
+        font-size: 0.95rem;
+      }
+
+      .skill-group-title {
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 2px;
+      }
+
+      .skill-group-content {
+        color: #374151;
+      }
+
+      .project-name {
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .project-tech {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 4px;
+      }
+
+      .project-desc {
+        font-size: 0.95rem;
+        color: #374151;
+      }
+
+      .footer-note {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-top: 18px;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 16px 8px;
+        }
+
+        .cv-container {
+          grid-template-columns: 1fr;
+        }
+
+        .cv-sidebar {
+          text-align: center;
+        }
+
+        .avatar-wrapper {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .contact-item {
+          word-break: break-word;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv-container">
+      <aside class="cv-sidebar">
+        <div class="avatar-wrapper">
+          <!-- Thay đường dẫn ảnh bên dưới bằng ảnh thật của bạn đặt trong static, ví dụ /images/avatar.jpg -->
+          <img src="/images/avatar.jpg" alt="Ảnh Trịnh Kiển Đạt" />
+        </div>
+        <div class="name">Trịnh Kiển Đạt</div>
+        <div class="position">Sinh viên Công nghệ Phần mềm (Năm 4)</div>
+
+        <div class="sidebar-section-title">Thông tin liên hệ</div>
+        <div class="contact-item">
+          <span class="contact-label">Điện thoại:</span> 0389 473 201
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email:</span> Trinhkiendat2004
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Địa chỉ:</span> Gò Vấp, TP. Hồ Chí Minh
+        </div>
+
+        <div class="sidebar-section-title">Công cụ & Platform</div>
+        <div class="tag-list">
+          <span class="tag">VS Code</span>
+          <span class="tag">Postman</span>
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Android Studio</span>
+        </div>
+
+        <div class="footer-note">
+          CV được xây dựng trên Spring Boot + MySQL (Docker Compose)
+        </div>
+      </aside>
+
+      <main class="cv-main">
+        <section class="section">
+          <div class="section-title">Giới thiệu</div>
+          <p class="summary-text">
+            Sinh viên năm 4 chuyên ngành Công nghệ Phần mềm, có kinh nghiệm phát
+            triển web với JavaScript, React và Node.js. Mong muốn trở thành
+            Software Developer để phát triển các hệ thống web có khả năng mở
+            rộng và đóng góp vào các dự án thực tế.
+          </p>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Học vấn</div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="timeline-role">
+                Đại học Công nghệ TP. Hồ Chí Minh (HUTECH)
+              </div>
+              <div class="timeline-time">2022 - 2026</div>
+            </div>
+            <div class="timeline-org">
+              Chuyên ngành Công nghệ Phần mềm &mdash; GPA: 2.8
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Kỹ năng</div>
+          <div class="skills-grid">
+            <div>
+              <div class="skill-group-title">Ngôn ngữ lập trình</div>
+              <div class="skill-group-content">
+                C#, Java, PHP, HTML, CSS, JavaScript
+              </div>
+            </div>
+            <div>
+              <div class="skill-group-title">Frontend</div>
+              <div class="skill-group-content">ReactJS, HTML5, CSS3</div>
+            </div>
+            <div>
+              <div class="skill-group-title">Backend</div>
+              <div class="skill-group-content">NodeJS, Java (Spring Boot)</div>
+            </div>
+            <div>
+              <div class="skill-group-title">Cơ sở dữ liệu</div>
+              <div class="skill-group-content">MySQL, SQL Server</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Dự án cá nhân</div>
+          <div class="project">
+            <div class="project-name">Website đặt Homestay</div>
+            <div class="project-tech">
+              Công nghệ: HTML, CSS, JavaScript, ReactJS / NodeJS, MySQL
+            </div>
+            <p class="project-desc">
+              Xây dựng trang web cho phép người dùng tìm kiếm, xem chi tiết và
+              đặt homestay. Quản lý thông tin phòng, lịch đặt, người dùng và
+              thanh toán giả lập.
+            </p>
+            <ul class="list">
+              <li>Thiết kế giao diện người dùng thân thiện, dễ sử dụng.</li>
+              <li>
+                Xây dựng API backend với Node.js kết nối MySQL để lưu trữ dữ
+                liệu đặt phòng.
+              </li>
+              <li>Áp dụng Git/GitHub để quản lý phiên bản và làm việc nhóm.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Mục tiêu nghề nghiệp</div>
+          <ul class="list">
+            <li>
+              Trở thành Software Developer tham gia phát triển các hệ thống web
+              có khả năng mở rộng.
+            </li>
+            <li>Nâng cao kiến thức về kiến trúc hệ thống, DevOps và Cloud.</li>
+            <li>
+              Học hỏi từ các dự án thực tế và đóng góp vào cộng đồng lập trình.
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
