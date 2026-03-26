@@ -2,7 +2,7 @@ name: Deploy to Docker Hub
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-and-push:
@@ -24,4 +24,4 @@ jobs:
           context: .
           push: true
           # Thay đổi tên image cho đúng ý bạn
-          tags: trinhkiendat/java-spring-boot-app:latest
+          tags: trinhkiendat/trinhkiendat-app-java:latest
