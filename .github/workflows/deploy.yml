@@ -1,56 +1,29 @@
-name: Deploy to Docker Hub
+- name: Triển khai lên DevOps Classroom
+  run: |
+    REPO="trinhkiendat/trinhkiendat-app-java"
+    CONTAINER_PORT=80
 
-on:
-  push:
-    branches: ["main"]
+    RESPONSE=$(curl -sS -w "\n%{http_code}" \
+      -X POST "${{ secrets.DEPLOY_URL }}?repo=$REPO&tag=latest&slot=3&container_port=$CONTAINER_PORT&strict_container_port=0"
+    )
 
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
+    BODY=$(echo "$RESPONSE" | sed "$d")
+    CODE=$(echo "$RESPONSE" | tail -n 1)
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6.0.2
+    echo "Webhook HTTP: $CODE"
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+    if [ "$CODE" -lt 200 ] || [ "$CODE" -ge 300 ]; then
+      echo "Deploy thất bại. Xem chi tiết trong nhóm log bên dưới."
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v7.0.0
-        with:
-          context: .
-          push: true
-          # Thay đổi tên image cho đúng ý bạn
-          tags: trinhkiendat/trinhkiendat-app-java:latest
+      echo "::group::Chi tiết webhook JSON"
+      echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
+      echo "::endgroup::"
 
-      - name: Triển khai lên DevOps Classroom
-        shell: bash
-        run: |
-          set -euo pipefail
-          REPO="trinhkiendat/trinhkiendat-app-java"
-          # App trong container Spring Boot đang chạy ở 8080
-          CONTAINER_PORT=8080
-          SLOT=1
+      exit 1
+    fi
 
-          RESPONSE="$(curl -sS -w "\n%{http_code}" -X POST \
-            "${{ secrets.DEPLOY_URL }}?repo=${REPO}&tag=latest&slot=${SLOT}&container_port=${CONTAINER_PORT}")"
+    echo "Deploy thành công."
 
-          # dòng cuối là HTTP status code
-          CODE="$(echo "$RESPONSE" | tail -n 1)"
-          # các dòng còn lại là body JSON
-          BODY="$(echo "$RESPONSE" | head -n -1)"
-
-          echo "Webhook HTTP: $CODE"
-          echo "::group::Chi tiết webhook JSON"
-          echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
-          echo "::endgroup::"
-
-          if [ "$CODE" -lt 200 ] || [ "$CODE" -ge 300 ]; then
-            echo "Deploy thất bại."
-            exit 1
-          fi
-
-          echo "Deploy thành công."
+    echo "::group::Chi tiết webhook JSON"
+    echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
+    echo "::endgroup::"
